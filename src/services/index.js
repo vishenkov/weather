@@ -1,6 +1,11 @@
-import * as services from '.';
 import MetaWeather from './MetaWeather';
+import OpenWeather from './OpenWeather';
 
 export const defaultService = MetaWeather;
 
-export default (serviceName) => services[serviceName] ? services[serviceName] : defaultService;
+const services = {
+  MetaWeather,
+  OpenWeather,
+};
+
+export default serviceName => (services[serviceName] ? services[serviceName] : defaultService);

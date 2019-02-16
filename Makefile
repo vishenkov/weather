@@ -1,7 +1,7 @@
 install: install-deps
 
 run:
-	npx babel-node -- 'src/bin/weather.js' MetaWeather london
+	npx babel-node -- 'src/bin/weather.js' --service OpenWeather london
 
 install-deps:
 	npm install

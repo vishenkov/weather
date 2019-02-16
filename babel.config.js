@@ -15,6 +15,7 @@ module.exports = {
         proposal: 'minimal',
       },
     ],
-    ['@babel/plugin-proposal-export-default-from']
+    ['@babel/plugin-proposal-export-default-from'],
+    ['@babel/plugin-proposal-class-properties'],
   ],
 };

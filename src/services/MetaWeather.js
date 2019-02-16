@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import axios from 'axios';
 
 const baseUrl = 'https://www.metaweather.com/api/location/';
@@ -7,25 +8,23 @@ export default class MetaWeather {
   }
 
   async fetchData(query) {
-    const { data } = await this.lib.get(new URL(`${baseUrl}search`).toString(), {
+    const { data = [] } = await this.lib.get(new URL(`${baseUrl}search`).toString(), {
       params: {
-        query
-      }
+        query,
+      },
     });
 
-    const { woeid } = data[0];
+    const woeid = _.get(data[0], 'woeid');
     const { data: weatherData } = await this.lib.get(new URL(`${baseUrl}${woeid}`).toString());
 
     return weatherData;
   }
 
-  formatData (rawWeather = {}) {
-    return ({
-      temp: rawWeather.consolidated_weather[0].the_temp,
-      minTemp: rawWeather.consolidated_weather[0].min_temp,
-      maxTemp: rawWeather.consolidated_weather[0].max_temp,
-    });
-  }
+  formatData = (rawWeather = {}) => ({
+    temp: rawWeather.consolidated_weather[0].the_temp,
+    minTemp: rawWeather.consolidated_weather[0].min_temp,
+    maxTemp: rawWeather.consolidated_weather[0].max_temp,
+  });
 
   async fetchCityWeather(city = '') {
     const rawWeather = await this.fetchData(city);
