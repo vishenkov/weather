@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import MetaWeather from './MetaWeather';
 import OpenWeather from './OpenWeather';
 
@@ -8,4 +9,4 @@ const services = {
   OpenWeather,
 };
 
-export default serviceName => (services[serviceName] ? services[serviceName] : defaultService);
+export default serviceName => _.get(services, serviceName, defaultService);
