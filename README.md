@@ -1,14 +1,21 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+# Weather cli utility
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+## Usage
+### As cli
+```sh
+$ weather --service OpenWeather london
 
-# nodejs-package
+> { temp: 11.515, minTemp: 5.656666666666666, maxTemp: 11.5 }
+```
 
-[![Code Climate](https://codeclimate.com/github/hexlet-boilerplates/javascript-package/badges/gpa.svg)](https://codeclimate.com/github/hexlet-boilerplates/javascript-package)
-[![Issue Count](https://codeclimate.com/github/hexlet-boilerplates/javascript-package/badges/issue_count.svg)](https://codeclimate.com/github/hexlet-boilerplates/javascript-package)
-[![Build Status](https://travis-ci.org/hexlet-boilerplates/nodejs-package.svg?branch=master)](https://travis-ci.org/hexlet-boilerplates/nodejs-package)
+### As lib
+```javascript
+import Weather from 'weather';
+
+const weather = new Weather();
+await weather.getCityWeather('london');
+/// Response: { temp: 11.515, minTemp: 5.656666666666666, maxTemp: 11.5 }
+```
 
 ## Setup
 
@@ -21,3 +28,13 @@ $ make install
 ```sh
 $ make test
 ```
+
+## Build
+```sh
+$ make build
+```
+
+##
+[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+
+This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
