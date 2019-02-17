@@ -6,7 +6,7 @@ export default class Weather {
   }
 
   async getCityWeather(city = '') {
-    const weather = this.service.fetchCityWeather(city);
+    const weather = await this.service.fetchCityWeather(city);
     return weather;
   }
 }
