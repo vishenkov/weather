@@ -1,11 +1,7 @@
-import axios from 'axios';
+import BaseService from './BaseService';
 
 const baseUrl = 'https://samples.openweathermap.org/data/2.5/weather';
-export default class OpenWeather {
-  constructor({ lib = axios }) {
-    this.lib = lib;
-  }
-
+export default class OpenWeather extends BaseService {
   async fetchData(query) {
     const { data = {} } = await this.lib.get(new URL(baseUrl).toString(), {
       params: {
@@ -22,9 +18,4 @@ export default class OpenWeather {
     minTemp: rawWeather.main.temp_min,
     maxTemp: rawWeather.main.temp_max,
   });
-
-  async fetchCityWeather(city = '') {
-    const rawWeather = await this.fetchData(city);
-    return this.formatData(rawWeather);
-  }
 }
